@@ -10,7 +10,11 @@ ElDisciplina ::ElDisciplina() {
     prev = NULL;
 }
 
-ElDisciplina :: ~ElDisciplina() {}
+ElDisciplina :: ~ElDisciplina() {
+    di = NULL;
+    next = NULL;
+    prev = NULL;
+}
 
 void ElDisciplina ::setDisciplina(Disciplina *pd) {
     di = pd;

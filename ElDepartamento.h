@@ -26,6 +26,9 @@ public:
     void setNext (ElDepartamento* pn);
     void setPrev (ElDepartamento* pp);
 
+    ElDepartamento* getNext ();
+    ElDepartamento* getPrev ();
+
 };
 
 

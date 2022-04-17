@@ -11,7 +11,11 @@ ElDepartamento ::ElDepartamento() {
     prev = NULL;
 }
 
-ElDepartamento :: ~ElDepartamento() {}
+ElDepartamento :: ~ElDepartamento() {
+    dep = NULL;
+    next = NULL;
+    prev = NULL;
+}
 
 void ElDepartamento ::setDepartamento(Departamento *pdep) {
     dep = pdep;
@@ -27,4 +31,12 @@ void ElDepartamento ::setNext(ElDepartamento *pn) {
 
 void ElDepartamento ::setPrev(ElDepartamento *pp) {
     prev = pp;
+}
+
+ElDepartamento* ElDepartamento ::getNext() {
+    return next;
+}
+
+ElDepartamento* ElDepartamento ::getPrev() {
+    return prev;
 }

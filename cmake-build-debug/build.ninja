@@ -127,6 +127,12 @@ build CMakeFiles/sistema_academico.dir/ElDepartamento.cpp.o: CXX_COMPILER__siste
   OBJECT_DIR = CMakeFiles/sistema_academico.dir
   OBJECT_FILE_DIR = CMakeFiles/sistema_academico.dir
 
+build CMakeFiles/sistema_academico.dir/ListaDepartamento.cpp.o: CXX_COMPILER__sistema_academico_Debug /home/henrique/CLionProjects/sistema_academico/ListaDepartamento.cpp || cmake_object_order_depends_target_sistema_academico
+  DEP_FILE = CMakeFiles/sistema_academico.dir/ListaDepartamento.cpp.o.d
+  FLAGS = -g -std=gnu++14
+  OBJECT_DIR = CMakeFiles/sistema_academico.dir
+  OBJECT_FILE_DIR = CMakeFiles/sistema_academico.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target sistema_academico
@@ -135,7 +141,7 @@ build CMakeFiles/sistema_academico.dir/ElDepartamento.cpp.o: CXX_COMPILER__siste
 #############################################
 # Link the executable sistema_academico
 
-build sistema_academico: CXX_EXECUTABLE_LINKER__sistema_academico_Debug CMakeFiles/sistema_academico.dir/main.cpp.o CMakeFiles/sistema_academico.dir/Universidade.cpp.o CMakeFiles/sistema_academico.dir/Pessoa.cpp.o CMakeFiles/sistema_academico.dir/Principal.cpp.o CMakeFiles/sistema_academico.dir/Departamento.cpp.o CMakeFiles/sistema_academico.dir/Professor.cpp.o CMakeFiles/sistema_academico.dir/Aluno.cpp.o CMakeFiles/sistema_academico.dir/Disciplina.cpp.o CMakeFiles/sistema_academico.dir/ElAluno.cpp.o CMakeFiles/sistema_academico.dir/ElDisciplina.cpp.o CMakeFiles/sistema_academico.dir/ListaAluno.cpp.o CMakeFiles/sistema_academico.dir/ListaDisciplina.cpp.o CMakeFiles/sistema_academico.dir/ElDepartamento.cpp.o
+build sistema_academico: CXX_EXECUTABLE_LINKER__sistema_academico_Debug CMakeFiles/sistema_academico.dir/main.cpp.o CMakeFiles/sistema_academico.dir/Universidade.cpp.o CMakeFiles/sistema_academico.dir/Pessoa.cpp.o CMakeFiles/sistema_academico.dir/Principal.cpp.o CMakeFiles/sistema_academico.dir/Departamento.cpp.o CMakeFiles/sistema_academico.dir/Professor.cpp.o CMakeFiles/sistema_academico.dir/Aluno.cpp.o CMakeFiles/sistema_academico.dir/Disciplina.cpp.o CMakeFiles/sistema_academico.dir/ElAluno.cpp.o CMakeFiles/sistema_academico.dir/ElDisciplina.cpp.o CMakeFiles/sistema_academico.dir/ListaAluno.cpp.o CMakeFiles/sistema_academico.dir/ListaDisciplina.cpp.o CMakeFiles/sistema_academico.dir/ElDepartamento.cpp.o CMakeFiles/sistema_academico.dir/ListaDepartamento.cpp.o
   FLAGS = -g
   OBJECT_DIR = CMakeFiles/sistema_academico.dir
   POST_BUILD = :
