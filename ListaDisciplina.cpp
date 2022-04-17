@@ -58,8 +58,10 @@ void ListaDisciplina ::imprimeLista() {
 
     ElDisciplina* aux = first;
 
-    while (aux->getNext()!= NULL){
+    while (aux!= NULL){
 
         cout << aux->getDisciplina()->getNome() << endl;
+
+        aux = aux->getNext();
     }
 }

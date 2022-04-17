@@ -65,7 +65,7 @@ void ListaAluno ::imprimeLista() {
 
     ElAluno* aux = first;
 
-    while (aux->getNext() != NULL){
+    while (aux != NULL){
 
         cout << (aux->getAluno())->getNome() << endl;
 

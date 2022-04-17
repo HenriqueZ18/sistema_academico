@@ -27,3 +27,40 @@ ListaDepartamento :: ~ListaDepartamento() {
     first = NULL;
     cur = NULL;
 }
+
+void ListaDepartamento ::addDepartamento(Departamento *pd) {
+
+    if (pd != NULL){
+
+        ElDepartamento* aux = NULL;
+        aux = new ElDepartamento();
+        aux->setDepartamento(pd);
+
+        if (first == NULL){
+            first = aux;
+            cur = aux;
+        }
+        else{
+            cur->setNext(aux);
+            aux->setPrev(cur);
+            cur = aux;
+        }
+    }
+    else{
+        cout << "WARNING: O Ponteiro fornecido possui valor NULL!" << endl;
+    }
+}
+
+void ListaDepartamento ::imprimeLista() {
+
+    ElDepartamento* aux= NULL;
+    aux = first;
+
+    while (aux != NULL){
+        cout << aux->getDepartamento()->getNome() << endl;
+
+        aux = aux->getNext();
+    }
+
+
+}
