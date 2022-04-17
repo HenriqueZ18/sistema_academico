@@ -37,3 +37,16 @@
 1279	2277	1650222872336404096	CMakeFiles/sistema_academico.dir/ElDisciplina.cpp.o	54b29bc80f963b34
 1131	2292	1650222872349737479	CMakeFiles/sistema_academico.dir/Disciplina.cpp.o	6df4015a8e81b644
 2292	2391	1650222872446404504	sistema_academico	2b897be644cd3223
+1	1016	1650225907747445256	CMakeFiles/sistema_academico.dir/Pessoa.cpp.o	bbb931976cdc96b7
+1	1147	1650225907874108042	CMakeFiles/sistema_academico.dir/Principal.cpp.o	d0d56174a4e969
+0	1188	1650225907904107123	CMakeFiles/sistema_academico.dir/main.cpp.o	a0052dc277d0055a
+9	1281	1650225908010770523	CMakeFiles/sistema_academico.dir/Departamento.cpp.o	478db20dd08c4a25
+1	1321	1650225908050769298	CMakeFiles/sistema_academico.dir/Universidade.cpp.o	f99caee66797db2b
+21	1371	1650225908100767766	CMakeFiles/sistema_academico.dir/Professor.cpp.o	90cff9bbd1ac54d6
+1019	1957	1650225908687416465	CMakeFiles/sistema_academico.dir/Aluno.cpp.o	37d36986d3602f4
+1281	2154	1650225908884077109	CMakeFiles/sistema_academico.dir/ElDisciplina.cpp.o	54b29bc80f963b34
+1322	2203	1650225908934075578	CMakeFiles/sistema_academico.dir/ListaAluno.cpp.o	69efa4c03847d2b3
+1188	2204	1650225908930742347	CMakeFiles/sistema_academico.dir/ElAluno.cpp.o	f04d7fbade4c891b
+1148	2213	1650225908944075272	CMakeFiles/sistema_academico.dir/Disciplina.cpp.o	6df4015a8e81b644
+1371	2236	1650225908967407890	CMakeFiles/sistema_academico.dir/ListaDisciplina.cpp.o	1b4c86b63edc3e9b
+2236	2337	1650225909067404828	sistema_academico	2b897be644cd3223

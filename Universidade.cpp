@@ -24,24 +24,21 @@ char* Universidade::getNome() {
 
 void Universidade ::setDepartamento(Departamento* dpto) {
 
- Vdep.push_back(dpto);
- //Ldep.push_back(dpto);
+ //Vdep.push_back(dpto);
+ Ldep.push_back(dpto);
 
  deps++;
 }
 
 void Universidade :: imprimeDepartamentos() {
 
-    int i;
+    int j = 0;
 
-    Departamento* aux = NULL;
+    list<Departamento*>::iterator i;
 
-    int tam = (int) Vdep.size();
-
-    for (i = 0; i < tam; i++){
-
-        aux = Vdep [i];
-        cout << aux->getNome() << " id: " << i << endl;
+    for (i = Ldep.begin(); i != Ldep.end(); i++){
+        cout << (*i)->getNome() << " id: " << j << endl;
+        j++;
     }
 }
 

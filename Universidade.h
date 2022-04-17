@@ -19,8 +19,8 @@ class Universidade {
 private:
 
     char nome [100];
-    vector <Departamento*> Vdep ;
-    //list <Departamaento*> Ldep;
+    //vector<Departamento*> Vdep ;
+    list <Departamento*> Ldep;
     int deps = 0;
 
 
