@@ -3,7 +3,7 @@
 //
 #include "Departamento.h"
 #include "Universidade.h"
-#include "Disciplina.h"
+#include "ListaDisciplina.h"
 
 
 Departamento:: Departamento (char *n){
@@ -39,6 +39,15 @@ void Departamento :: setUnivFiliado(Universidade *pu) {
 
 void Departamento ::addDisciplina (Disciplina *d) {
     ldisciplina.push_back (d);
+}
+
+void Departamento ::imprimeDisciplinas() {
+
+    list<Disciplina*>::iterator i;
+
+    for (i = ldisciplina.begin(); i != ldisciplina.end(); i++){
+        cout << (*i)->getNome() << endl;
+    }
 }
 
 

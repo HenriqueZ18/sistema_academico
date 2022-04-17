@@ -9,7 +9,9 @@
 #include <cstring>
 #include <list>
 #include"Departamento.h"
-#include "Aluno.h"
+#include "ListaAluno.h"
+
+//#include "Aluno.h"
 //#include "ElAluno.h"
 
 

@@ -38,6 +38,8 @@ public:
 
     void addDisciplina (Disciplina* d);
 
+    void imprimeDisciplinas ();
+
 };
 
 #endif //SISTEMA_ACADEMICO_DEPARTAMENTO_H

@@ -5,6 +5,7 @@
 #include "Disciplina.h"
 
 
+
 Disciplina::Disciplina(char* n, int maxF, int alunosF) {
 
     strcpy (nome, n);
@@ -83,11 +84,13 @@ void Disciplina ::imprimeAlunos() {
  * da biblioteca list.
 void Disciplina :: incluiAluno(Aluno *a) {
 
-    ElAluno* aux = NULL;
-    aux = new ElAluno();
-    aux->setAluno(a);
 
     if ((alunos < max) && a != NULL){
+
+        ElAluno* aux = NULL;
+        aux = new ElAluno();
+        aux->setAluno(a);
+
         if (first == NULL){
             first = aux;
             cur = aux;
@@ -101,7 +104,11 @@ void Disciplina :: incluiAluno(Aluno *a) {
         alunos++;
     }
     else{
-        cout << "Nao foi possivel incluir este aluno pois a disciplina esta lotada!" << endl;
+        if (a != NULL)
+            cout << "Nao foi possivel incluir este aluno pois a disciplina esta lotada!" << endl;
+
+        else
+            cout << "Ponteiro Nulo" << endl;
     }
 }
 */
