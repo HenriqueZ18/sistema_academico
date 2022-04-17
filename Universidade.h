@@ -10,7 +10,7 @@
 #include <cstring>
 #include <vector>
 #include <list>
-#include "Departamento.h"
+#include "ListaDepartamento.h"
 
 using namespace std;
 

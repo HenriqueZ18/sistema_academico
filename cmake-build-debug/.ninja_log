@@ -20,3 +20,7 @@
 451	548	1650227175187461189	sistema_academico	9c0b47a2ce7ae424
 1	352	1650227576938244305	CMakeFiles/sistema_academico.dir/ListaDepartamento.cpp.o	eba73c88a399ba20
 352	449	1650227577034910021	sistema_academico	9c0b47a2ce7ae424
+1	355	1650227951303828877	CMakeFiles/sistema_academico.dir/ListaDepartamento.cpp.o	eba73c88a399ba20
+1	387	1650227951337161765	CMakeFiles/sistema_academico.dir/ListaAluno.cpp.o	69efa4c03847d2b3
+1	402	1650227951350494921	CMakeFiles/sistema_academico.dir/ListaDisciplina.cpp.o	1b4c86b63edc3e9b
+402	500	1650227951447160299	sistema_academico	9c0b47a2ce7ae424
