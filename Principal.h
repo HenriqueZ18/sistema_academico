@@ -56,6 +56,11 @@ public:
     void gravaDisciplinas ();
     void gravaId ();
 
+    void gravaDisAlu ();
+    void gravaDisDep ();
+    void gravaUniDep ();
+
+
     void gravaTudo ();
 
 
@@ -66,6 +71,18 @@ public:
     void recuperaId ();
 
     void recuperaTudo ();
+
+    Disciplina* retornaDisId (int id);
+    Departamento* retornaDepId (int id);
+    Universidade* retornaUniId (int id);
+    Aluno* retornaAluId (int id);
+
+    void associaDisAlu ();
+    void associaDisDep ();
+    void associaUniDep ();
+
+
+
 
 };
 

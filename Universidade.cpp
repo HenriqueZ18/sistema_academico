@@ -7,11 +7,13 @@ Universidade::Universidade(char *n) {
 
     strcpy(nome, n);
     deps = 0;
+    id = -1;
 
 }
 
 Universidade:: ~Universidade() {
 
+    Ldep.clear();
 }
 
 void Universidade:: setNome (char* n)
@@ -42,6 +44,20 @@ void Universidade :: imprimeDepartamentos() {
         j++;
     }
 }
+
+void Universidade ::setId(int n) {
+    id = n;
+}
+
+int Universidade ::getId() {
+    return id;
+}
+
+
+
+
+
+
 
 /*void Universidade::imprimeDepartamentos() {
 

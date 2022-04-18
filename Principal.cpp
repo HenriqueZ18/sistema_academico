@@ -607,6 +607,8 @@ void Principal :: gravaId (){
     cout << "ids gravadas com sucesso" << endl;
 }
 
+
+
 void Principal ::gravaTudo() {
          gravaAlunos ();
          gravaUniversidades ();
@@ -759,4 +761,62 @@ void Principal ::recuperaTudo() {
     recuperaDepartamentos ();
     recuperaDisciplinas ();
     recuperaId ();
+}
+
+
+/*=================================LOCALIZAÇÃO POR ID==================================*/
+
+Disciplina* Principal :: retornaDisId(int id) {
+
+    list<Disciplina *>::iterator i = lDis.begin();
+
+    while ((*i)->getId() != id && i != lDis.end()){
+        i++;
+    }
+    if ((*i)->getId() == id)
+        return *i;
+    else
+        return NULL;
+}
+
+Departamento* Principal ::retornaDepId(int id) {
+
+    list<Departamento*>::iterator i = lDep.begin();
+
+    while ((*i)->getId() != id && i != lDep.end()){
+        i++;
+    }
+
+    if ((*i)->getId() == id)
+        return *i;
+    else
+        return NULL;
+}
+
+Universidade* Principal ::retornaUniId (int id) {
+
+    list<Universidade*>::iterator i = lUni.begin();
+
+    while ((*i)->getId() != id && i != lUni.end()){
+        i++;
+    }
+
+    if ((*i)->getId() == id)
+        return *i;
+    else
+        return NULL;
+}
+
+Aluno* Principal ::retornaAluId(int id) {
+
+    list<Aluno*>::iterator i = lAlu.begin();
+
+    while ((*i)->getId() != id && i != lAlu.end()){
+        i++;
+    }
+
+    if ((*i)->getId() == id)
+        return *i;
+    else
+        return NULL;
 }

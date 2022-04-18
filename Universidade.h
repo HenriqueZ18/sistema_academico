@@ -22,6 +22,7 @@ private:
     //vector<Departamento*> Vdep ;
     list <Departamento*> Ldep;
     int deps;
+    int id;
 
 
 public:
@@ -36,6 +37,9 @@ public:
     void setDepartamento (Departamento* dpto);
 
     void imprimeDepartamentos ();
+
+    void setId (int n);
+    int getId ();
 
     //void setNomeDep (char* nome_dep);
 
