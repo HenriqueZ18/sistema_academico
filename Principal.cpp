@@ -584,7 +584,7 @@ void Principal ::gravaDisciplinas() {
 
 void Principal :: gravaId (){
 
-    ofstream gravadorId ("Id.dat", ios::out);
+    ofstream gravadorId ("id.dat", ios::out);
 
     if (!gravadorId){
         cerr << "Arquivo não pode ser aberto" << endl;
@@ -593,16 +593,14 @@ void Principal :: gravaId (){
         return;
     }
 
-    int i;
 
     cout << "gravando ids..." << endl;
-    for (i = 0; i < 4; i++){
 
         gravadorId << idAlu << endl;
         gravadorId << idDep << endl;
         gravadorId << idDis << endl;
         gravadorId << idUni << endl;
-    }
+
 
     gravadorId.close();
 
@@ -650,8 +648,115 @@ void Principal ::recuperaAlunos() {
     cout << "Alunos recuperados com sucesso." << endl;
 }
 
-void Principal ::recuperaUniversidades() {}
-void Principal ::recuperaDepartamentos() {}
-void Principal ::recuperaDisciplinas() {}
-void Principal ::recuperaId() {}
-void Principal ::recuperaTudo() {}
+void Principal ::recuperaUniversidades() {
+
+    ifstream recuperadorUniversidades ("universidades.dat", ios::in);
+
+    if (!recuperadorUniversidades){
+        cerr << "Arquivo não pode ser aberto" << endl;
+        fflush(stdin);
+        getchar();
+        return;
+    }
+    lUni.clear();
+
+    Universidade* nova_uni = NULL;
+    char nome [150];
+
+    cout << "Recuperando universidades..." << endl;
+    while (recuperadorUniversidades >> nome){
+        if(strcmp(nome, "") != 0){
+            nova_uni = new Universidade();
+            nova_uni->setNome(nome);
+
+            lUni.push_back(nova_uni);
+        }
+    }
+
+    recuperadorUniversidades.close();
+    cout << "Universidades recuperadas com sucesso." << endl;
+
+}
+void Principal ::recuperaDepartamentos() {
+
+    ifstream recuperaDepartamentos ("departamentos.dat", ios::in);
+
+    if(!recuperaDepartamentos){
+        cerr << "Arquivo não pode ser aberto" << endl;
+        fflush(stdin);
+        getchar();
+        return;
+    }
+    lDep.clear();
+
+    Departamento* dep = NULL;
+    int id;
+    char nome [150];
+
+    cout << "Recuperando departamentos..." << endl;
+    while(recuperaDepartamentos >> id >> nome){
+        if(strcmp(nome, "") != 0){
+            dep = new Departamento(nome);
+            dep->setId(id);
+
+            lDep.push_back(dep);
+        }
+
+    }
+
+    recuperaDepartamentos.close();
+    cout << "Departamentos Recuperados com sucesso." << endl;
+}
+void Principal ::recuperaDisciplinas() {
+
+    ifstream recuperaDisciplinas ("disciplinas.dat", ios::in);
+
+    if(!recuperaDisciplinas){
+        cerr << "Arquivo não pode ser aberto" << endl;
+        fflush(stdin);
+        getchar();
+        return;
+    }
+    lDis.clear();
+
+    Disciplina* dis = NULL;
+    int id, max;
+    char nome [150];
+
+    cout << "Recuperando disciplinas..." << endl;
+    while (recuperaDisciplinas >> id >> nome >> max){
+        if (strcmp(nome, "") != 0){
+            dis = new Disciplina(nome, max, 0);
+            dis->setId(id);
+
+            lDis.push_back(dis);
+        }
+    }
+
+    recuperaDisciplinas.close();
+    cout << "Disciplinas recuperadas com sucesso." << endl;
+}
+void Principal ::recuperaId() {
+
+    ifstream recuperaId ("id.dat", ios::in);
+
+    if (!recuperaId){
+        cerr << "Arquivo não pode ser aberto" << endl;
+        fflush(stdin);
+        getchar();
+        return;
+    }
+
+    cout << "Recuperando ids..." << endl;
+        recuperaId >> idAlu >> idDep >> idDis >> idUni;
+
+    recuperaId.close();
+    cout << "Ids recuperadas com sucesso" << endl;
+}
+void Principal ::recuperaTudo() {
+    recuperaAlunos ();
+    recuperaUniversidades ();
+    recuperaDepartamentos ();
+    recuperaDisciplinas ();
+    recuperaId ();
+}
