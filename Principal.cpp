@@ -607,6 +607,101 @@ void Principal :: gravaId (){
     cout << "ids gravadas com sucesso" << endl;
 }
 
+void Principal ::gravaDisAlu() {
+
+    ofstream gravadorDisAlu ("ada.dat", ios::out);
+
+    if (!gravadorDisAlu){
+        cerr << "Arquivo não pode ser aberto" << endl;
+        fflush(stdin);
+        getchar();
+        return;
+    }
+
+    list<Disciplina*>::iterator i;
+    list<Aluno*>::iterator j;
+
+    list<Aluno*> aux;
+
+    for(i = lDis.begin(); i != lDis.end(); i++){
+        gravadorDisAlu << (*i)->getId() << endl;
+        aux = (*i)->getListaAluno();
+
+        gravadorDisAlu << aux.size() << endl;
+
+        for (j = aux.begin(); j != aux.end(); j++){
+            gravadorDisAlu << (*j)->getId() << endl;
+        }
+    }
+
+    gravadorDisAlu.close();
+
+    cout << "As relações aluno disciplina foram gravadas com sucesso." << endl;
+}
+
+void Principal ::gravaDisDep() {
+
+    ofstream gravadorDisDep ("add.dat", ios::out);
+
+    if(!gravadorDisDep){
+        cerr << "Arquivo não pode ser aberto" << endl;
+        fflush(stdin);
+        getchar();
+        return;
+    }
+
+    list<Departamento*>::iterator i;
+    list<Disciplina*>::iterator j;
+
+    list<Disciplina*> aux;
+
+    for (i = lDep.begin(); i != lDep.end(); i++){
+
+        gravadorDisDep << (*i)->getId() << endl;
+        aux = (*i)->getLista();
+
+        gravadorDisDep << aux.size() << endl;
+
+        for (j = aux.begin(); j != aux.end(); j++){
+            gravadorDisDep << (*j)->getId() << endl;
+        }
+    }
+
+    gravadorDisDep.close();
+
+    cout << "As relações Departamento Disciplina foram guardadas com sucesso" << endl;
+
+}
+
+void Principal :: gravaUniDep (){
+
+    ofstream gravadorUniDep ("aud.dat", ios::out);
+
+    if (!gravadorUniDep){
+        cerr << "Arquivo não pode ser aberto" << endl;
+        fflush(stdin);
+        getchar();
+        return;
+    }
+
+    list<Universidade*>::iterator i;
+    list<Departamento*>::iterator j;
+
+    list<Departamento*> aux;
+
+    for (i = lUni.begin(); i != lUni.end(); i++){
+
+        gravadorUniDep << (*i)->getId() << endl;
+        aux = (*i)->getLista();
+        gravadorUniDep << aux.size() << endl;
+
+        for (j = aux.begin(); j != aux.end(); j++){
+            gravadorUniDep << (*j)->getId() << endl;
+        }
+
+    }
+}
+
 
 
 void Principal ::gravaTudo() {
@@ -615,6 +710,10 @@ void Principal ::gravaTudo() {
          gravaDepartamentos ();
          gravaDisciplinas ();
          gravaId();
+
+         gravaDisAlu();
+         gravaDisDep();
+         gravaUniDep();
 }
 /*=================================RECUPERA==================================*/
 

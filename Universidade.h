@@ -41,6 +41,8 @@ public:
     void setId (int n);
     int getId ();
 
+    list<Departamento*> getLista ();
+
     //void setNomeDep (char* nome_dep);
 
 //   void setSigla (char* s);

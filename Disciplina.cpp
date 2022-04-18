@@ -91,6 +91,10 @@ int Disciplina ::getMax() {
     return max;
 }
 
+list<Aluno*> Disciplina ::getListaAluno() {
+    return lalunos;
+}
+
 
 
 

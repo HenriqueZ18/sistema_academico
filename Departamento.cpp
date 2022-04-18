@@ -54,4 +54,8 @@ void Departamento ::imprimeDisciplinas() {
     }
 }
 
+list<Disciplina*> Departamento :: getLista (){
+    return ldisciplina;
+}
+
 

@@ -53,6 +53,10 @@ int Universidade ::getId() {
     return id;
 }
 
+list<Departamento*> Universidade ::getLista() {
+    return Ldep;
+}
+
 
 
 

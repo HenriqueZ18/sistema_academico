@@ -52,6 +52,8 @@ public:
 
     int getMax ();
 
+    list<Aluno*> getListaAluno ();
+
     //void incluiAluno (Aluno* a);
 
 };

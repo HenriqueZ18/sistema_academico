@@ -41,6 +41,8 @@ public:
 
     void imprimeDisciplinas ();
 
+    list<Disciplina*> getLista ();
+
 
 };
 
