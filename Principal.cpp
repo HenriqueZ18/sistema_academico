@@ -3,6 +3,8 @@
 //
 
 #include "Principal.h"
+#include <iostream>
+#include <fstream>
 
 using namespace std;
 
@@ -38,7 +40,7 @@ void Principal :: menu (){
 
     int op = -1;
 
-    while (op != 3){
+    while (op != 4){
         //Comando para limpar o terminal do linux.
         system ("clear");
         //system("cls");
@@ -46,7 +48,8 @@ void Principal :: menu (){
         cout << "Informe a opção desejada: " << endl;
         cout << "1- Realizar um cadastro" << endl;
         cout << "2- Executar" << endl;
-        cout << "3- Sair" << endl;
+        cout << "3- Gravar" << endl;
+        cout << "4- Sair" << endl;
         cin >> op;
 
         switch (op){
@@ -55,7 +58,9 @@ void Principal :: menu (){
             break;
             case 2: {menuExe();}
             break;
-            case 3: {cout << "TERMINANDO O PROGRAMA" << endl;}
+            case 3: {menuGrava();}
+            break;
+            case 4: {cout << "TERMINANDO O PROGRAMA" << endl;}
             break;
             default : {cout << "Opção inválida" << endl;
                 system ("Pause");
@@ -106,7 +111,7 @@ void Principal :: menuExe (){
 
     int op = -1;
 
-    while (op != 4){
+    while (op != 5){
 
         system ("clear");
         //system("cls");
@@ -115,7 +120,8 @@ void Principal :: menuExe (){
         cout << "1- Listar Disciplinas" << endl;
         cout << "2- listar Departamentos" << endl;
         cout << "3- Listar Universidade" << endl;
-        cout << "4- Sair" << endl;
+        cout << "4- Listar Alunos" << endl;
+        cout << "5- Sair" << endl;
         cin >> op;
 
         switch (op){
@@ -138,7 +144,13 @@ void Principal :: menuExe (){
                 getchar();
                 getchar();
             } break;
-            case 4: {cout << "SAINDO..." << endl;}
+            case 4: {
+                imprimeAlunos();
+                fflush(stdin);
+                getchar();
+                getchar();
+            } break;
+            case 5: {cout << "SAINDO..." << endl;}
             break;
             default: {
                 cout <<"Opção Inválida!" << endl;
@@ -146,6 +158,48 @@ void Principal :: menuExe (){
                 getchar();
             }
         }
+    }
+}
+
+void Principal :: menuGrava (){
+
+    int op = -1;
+
+    while (op != 6){
+
+        system ("clear");
+
+        cout << "Informe a opção desejada: " << endl;
+        cout << "1- Gravar Disciplinas" << endl;
+        cout << "2- Gravar Departamentos" << endl;
+        cout << "3- Gravar Universidade" << endl;
+        cout << "4- Gravar Alunos" << endl;
+        cout << "5- Gravar Todos" << endl;
+        cout << "6- Sair" << endl;
+        cin >> op;
+
+        switch (op){
+            case 1 : {gravaDisciplinas();}
+                break;
+            case 2 : {gravaDepartamentos();}
+                break;
+            case 3: {gravaUniversidades();}
+                break;
+            case 4: {gravaAlunos();}
+                break;
+            case 5: {gravaTudo();}
+                break;
+            case 6 : {cout << "SAINDO..." << endl;}
+                break;
+            default : {
+                cout << "Opção Inválida" << endl;
+                getchar();
+            }
+
+
+        }
+
+
     }
 }
 
@@ -177,6 +231,14 @@ void Principal ::imprimeUniversidades() {
     for (i = lUni.begin(); i != lUni.end(); i++)
         cout << (*i)->getNome() << endl;
 
+}
+
+void Principal ::imprimeAlunos() {
+
+    list<Aluno*>::iterator i;
+
+    for (i = lAlu.begin(); i != lAlu.end(); i++)
+        cout << (*i)->getNome() << endl;
 }
 
 /*=================================CADASTRO==================================*/
@@ -212,6 +274,9 @@ void Principal :: cadDisciplina (){
         << d->getNome() << endl;
     }
 
+    aux->setId(idDis);
+    idDis++;
+
     lDis.push_back(aux);
 }
 
@@ -245,6 +310,9 @@ void Principal :: cadDepartamento() {
         cout << "O departamento " << aux->getNome() << " foi associado com sucesso à Universidade "
         << u->getNome() << endl;
     }
+
+    aux->setId(idDep);
+    idDep++;
 
 
     lDep.push_back(aux);
@@ -370,3 +438,145 @@ Disciplina* Principal :: localizaDisciplina (char *n){
     return dis;
 }
 
+/*=================================GRAVA==================================*/
+void Principal ::gravaAlunos() {
+    ofstream gravadorAlunos ("alunos.dat", ios::out);
+
+    if (!gravadorAlunos){
+        cerr << "Arquivo não pode ser aberto" << endl;
+        fflush(stdin);
+        getchar();
+        return;
+    }
+
+    list<Aluno*>::iterator i;
+
+    cout << "Gravando Alunos..." << endl;
+    for (i = lAlu.begin(); i != lAlu.end(); i++){
+
+        gravadorAlunos << (*i)->getId() << endl;
+        gravadorAlunos << (*i)->getRA() << endl;
+        gravadorAlunos << (*i)->getNome() << endl;
+
+    }
+    gravadorAlunos.close();
+    cout << "Alunos gravados com sucesso."<< endl;
+}
+
+void Principal ::gravaUniversidades() {
+
+    ofstream gravadorUniversidades ("universidades.dat", ios::out);
+
+    if (!gravadorUniversidades){
+        cerr << "Arquivo não pode ser aberto" << endl;
+        fflush(stdin);
+        getchar();
+        return;
+    }
+
+    list<Universidade*>::iterator i;
+
+    cout << "Gravando universidades..." << endl;
+    for(i = lUni.begin(); i != lUni.end(); i++){
+        gravadorUniversidades << (*i)->getNome() << endl;
+    }
+
+    gravadorUniversidades.close();
+    cout << "Universidades gravadas com sucesso." << endl;
+}
+
+void Principal ::gravaDepartamentos() {
+
+    ofstream gravadorDepartamentos ("departamentos.dat", ios::out);
+
+    if (!gravadorDepartamentos){
+        cerr << "Arquivo não pode ser aberto" << endl;
+        fflush(stdin);
+        getchar();
+        return;
+    }
+
+    list<Departamento*>::iterator i;
+
+    cout << "gravando Departamentos..." << endl;
+    for (i= lDep.begin(); i != lDep.end(); i++){
+        gravadorDepartamentos << (*i)->getId() << endl;
+        gravadorDepartamentos << (*i)->getNome() << endl;
+    }
+
+    gravadorDepartamentos.close();
+    cout << "Departamentos gravados com sucesso." << endl;
+}
+
+void Principal ::gravaDisciplinas() {
+
+    ofstream gravadorDisciplinas ("disciplinas.dat", ios::out);
+
+    if (!gravadorDisciplinas){
+        cerr << "Arquivo não pode ser aberto" << endl;
+        fflush(stdin);
+        getchar();
+        return;
+    }
+
+    list<Disciplina*>::iterator i;
+
+    cout << "gravando Disciplinas..." << endl;
+    for (i = lDis.begin(); i != lDis.end(); i++){
+        gravadorDisciplinas << (*i)->getId() << endl;
+        gravadorDisciplinas << (*i)->getNome() <<  endl;
+        gravadorDisciplinas << (*i)->getMax() << endl;
+    }
+
+    gravadorDisciplinas.close();
+
+    cout << "Disciplinas gravadas com sucesso." << endl;
+}
+
+void Principal :: gravaId (){
+
+    ofstream gravadorId ("Id.dat", ios::out);
+
+    if (!gravadorId){
+        cerr << "Arquivo não pode ser aberto" << endl;
+        fflush(stdin);
+        getchar();
+        return;
+    }
+
+    int i;
+
+    cout << "gravando ids..." << endl;
+    for (i = 0; i < 4; i++){
+
+        gravadorId << idAlu << endl;
+        gravadorId << idDep << endl;
+        gravadorId << idDis << endl;
+        gravadorId << idUni << endl;
+    }
+
+    gravadorId.close();
+
+    cout << "ids gravadas com sucesso" << endl;
+}
+
+void Principal ::gravaTudo() {
+         gravaAlunos ();
+         gravaUniversidades ();
+         gravaDepartamentos ();
+         gravaDisciplinas ();
+         gravaId();
+}
+/*=================================RECUPERA==================================*/
+
+void Principal ::recuperaAlunos() {
+
+    ifstream recuperadorAlunos ("alunos.dat", ios::in);
+
+    if (!recuperadorAlunos){
+        cerr << "Arquivo não pode ser aberto" << endl;
+        fflush(stdin);
+        getchar();
+        return;
+    }
+}

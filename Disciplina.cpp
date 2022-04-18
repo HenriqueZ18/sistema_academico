@@ -87,6 +87,10 @@ int Disciplina ::getId() {
     return id;
 }
 
+int Disciplina ::getMax() {
+    return max;
+}
+
 
 
 

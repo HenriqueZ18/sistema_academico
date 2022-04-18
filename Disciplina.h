@@ -50,6 +50,8 @@ public:
     void setId (int n);
     int getId ();
 
+    int getMax ();
+
     //void incluiAluno (Aluno* a);
 
 };

@@ -38,15 +38,33 @@ public:
     void menu ();
     void menuCad ();
     void menuExe ();
+    void menuGrava ();
 
     void imprimeDisciplinas ();
     void imprimeDepartamentos ();
     void imprimeUniversidades ();
-    void imprimeAluno ();
+    void imprimeAlunos ();
 
     Universidade* localizaUniversidade (char* n);
     Departamento* localizaDepartamento (char* n);
     Disciplina* localizaDisciplina (char* n);
+
+    void gravaAlunos ();
+    void gravaUniversidades ();
+    void gravaDepartamentos ();
+    void gravaDisciplinas ();
+    void gravaId ();
+
+    void gravaTudo ();
+
+
+    void recuperaAlunos ();
+    void recuperaUniversidades ();
+    void recuperaDepartamentos ();
+    void recuperaDisciplinas ();
+    void recuperaId ();
+
+    void recuperaTudo ();
 
 };
 
