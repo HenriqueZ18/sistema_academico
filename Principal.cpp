@@ -4,82 +4,250 @@
 
 #include "Principal.h"
 
+using namespace std;
+
 Principal:: Principal ()
 {
-    //Incializacao das Pessoas
-    Simao.Inicializa(3,10,1976, "Jean Simao");
-    Zequinha.Inicializa(06,10,2003,"Zequinha Nunes");
-    Greg.Inicializa(17, 03, 2003, "Greeeeeeeg");
-    Ronilson.Inicializa(25, 11, 2002, "Ronilson da Silva");
-
-    //Registrando as Universidades
-    UTFPR.setNome ("Universidade Tecnologica Federal Do Parana");
-
-
-    //Registrando os Departamentos
-    DAINF.setNome ("Departamento Academico de Informatica");
-    DAELN.setNome("Departamento Academico de Eletronica");
-    DAFIS.setNome("Departamento Academico de Fisica");
-    DAMAT.setNome("Departamento Academico de Matematica");
-
-    //Registrando as Disciplinas
-    FProg.setNome("Fundamentos de Programacao");
-    ED1.setNome("Estrutura de Dados 1");
-    TecProg.setNome("Tecnicas de Programacao");
-
-
-    //Registrando Departamentos às universidades
-    UTFPR.setDepartamento(&DAINF);
-    UTFPR.setDepartamento(&DAELN);
-    UTFPR.setDepartamento(&DAFIS);
-    UTFPR.setDepartamento(&DAMAT);
-
-    //Associando os Departamentos à Universidade
-    DAINF.setUnivFiliado(&UTFPR);
-    DAELN.setUnivFiliado(&UTFPR);
-    DAFIS.setUnivFiliado(&UTFPR);
-    DAMAT.setUnivFiliado(&UTFPR);
-
-    //Associando os Departamentos as Disciplinas
-    FProg.setDepFiliado(&DAINF);
-    ED1.setDepFiliado(&DAINF);
-    TecProg.setDepFiliado(&DAINF);
-
-
-    //Associando as Universidades as Pessoas
-    Simao.setUnivFiliado(&UTFPR);
-
-    //Associando Departamentos às Pessoas
-    Simao.setDepFiliado(&DAINF);
-
-    //Associando Pessoas as disciplinas
-    FProg.addAluno(&Zequinha);
-    FProg.addAluno(&Greg);
-    FProg.addAluno(&Ronilson);
-
-    //Eliminando Greg...
-    FProg.delAluno(&Greg);
-
-    //Data do inicio do Projeto
-    diaAtual = 14;
-    mesAtual = 03;
-    anoAtual = 2022;
+    dia = 0;
+    mes = 0;
+    ano = 0;
+    qtdDep = 0;
+    qtdDis = 0;
+    qtdUni = 0;
 
     Execute ();
 }
 
+Principal:: ~Principal (){}
+
 void Principal:: Execute ()
 {
-    Simao.Calc_imprime_idade(diaAtual,mesAtual,anoAtual);
+    menu ();
+}
 
-    Simao.OndeTrabalho();
+void Principal :: menu (){
 
-    UTFPR.imprimeDepartamentos();
+    int op = -1;
 
-    FProg.imprimeAlunos();
+    while (op != 3){
+        //Comando para limpar o terminal do linux.
+        system ("clear");
+        //system("cls");
+
+        cout << "Informe a opção desejada: " << endl;
+        cout << "1- Realizar um cadastro" << endl;
+        cout << "2- Executar" << endl;
+        cout << "3- Sair" << endl;
+        cin >> op;
+
+        switch (op){
+
+            case 1: {menuCad();}
+            break;
+            case 2: {menuExe();}
+            break;
+            case 3: {cout << "TERMINANDO O PROGRAMA" << endl;}
+            break;
+            default : {cout << "Opção inválida" << endl;
+                system ("Pause");
+            }
+        }
+    }
+}
+
+void Principal :: menuCad (){
+
+    int op = -1;
+
+    while (op != 4){
+
+        system ("clear");
+        //system("cls");
+
+        cout << "Informe a opção desejada: " << endl;
+        cout << "1- Cadastrar Disciplina" << endl;
+        cout << "2- Cadastrar Departamento" << endl;
+        cout << "3- Cadastrar Universidade" << endl;
+        cout << "4- Sair" << endl;
+        cin >> op;
+
+        switch (op){
+
+            case 1 : {cadDisciplina();}
+            break;
+            case 2 : {cadDepartamento();}
+            break;
+            case 3: {cadUniversidade();}
+            break;
+            case 4 : {cout << "SAINDO..." << endl;}
+            break;
+            default : {
+                cout << "Opção Inválida" << endl;
+                getchar();
+            }
+        }
+    }
 
 }
 
-Principal:: ~Principal (){}
+void Principal :: menuExe (){
+
+    int op = -1;
+
+    while (op != 4){
+
+        system ("clear");
+        //system("cls");
+
+        cout << "Informe a opção desejada: " << endl;
+        cout << "1- Listar Disciplinas" << endl;
+        cout << "2- listar Departamentos" << endl;
+        cout << "3- Listar Universidade" << endl;
+        cout << "4- Sair" << endl;
+        cin >> op;
+
+        switch (op){
+
+            case 1: {
+                imprimeDisciplinas();
+                fflush(stdin);
+                getchar();
+                getchar();
+            } break;
+            case 2: {
+                imprimeDepartamentos();
+                fflush (stdin);
+                getchar ();
+                getchar();
+            } break;
+            case 3: {
+                imprimeUniversidades();
+                fflush (stdin);
+                getchar();
+                getchar();
+            } break;
+            case 4: {cout << "SAINDO..." << endl;}
+            break;
+            default: {
+                cout <<"Opção Inválida!" << endl;
+                getchar ();
+                getchar();
+            }
+        }
+    }
+}
+
+void Principal ::imprimeDisciplinas() {
+
+    list<Disciplina*>::iterator i;
+
+    for (i = lDis.begin(); i != lDis.end(); i++)
+        cout << (*i)->getNome() << endl;
+
+}
+
+void Principal ::imprimeDepartamentos() {
+
+    list<Departamento*>::iterator i;
+
+    for (i = lDep.begin(); i != lDep.end(); i++)
+        cout << (*i)->getNome() << endl;
+
+}
+
+void Principal ::imprimeUniversidades() {
+
+    list<Universidade*>::iterator i;
+
+    for (i = lUni.begin(); i != lUni.end(); i++)
+        cout << (*i)->getNome() << endl;
+
+}
+
+void Principal :: cadDisciplina (){
+
+    system("clear");
+    //system("cls");
+
+    Disciplina* aux;
+
+    aux = new Disciplina();
+
+    cout << "Insira o nome da disciplina:" << endl;
+    cin >> aux->getNome();
+
+    lDis.push_back(aux);
+}
+
+void Principal :: cadDepartamento() {
+
+    system("clear");
+    //system("cls");
+
+    Departamento* aux;
+    Universidade* u = NULL;
+
+    aux = new Departamento ();
+
+    char nome_uni [10];
+
+    cout << "Insira o nome do Departamento:" << endl;
+    cin >> aux->getNome();
+
+    cout <<"Insira o nome da Universidade a que pertence o departamento " << endl;
+    cin >> nome_uni;
+
+    u = localizaUniversidade (nome_uni);
+
+    if (u == NULL){
+        cout <<"A Universidade não foi encontrada" << endl;
+    }
+    else{
+        u->setDepartamento(aux);
+        aux->setUnivFiliado(u);
+
+        cout << "O departamento " << aux->getNome() << " foi associado com sucesso à Universidade "
+        << u->getNome() << endl;
+    }
+
+
+    lDep.push_back(aux);
+
+}
+
+void Principal :: cadUniversidade() {
+
+    system("clear");
+    //system("cls");
+    Universidade* aux;
+
+    aux = new Universidade();
+
+    cout << "Insira o nome da Universidade:" << endl;
+    cin >> aux->getNome();
+
+
+    lUni.push_back(aux);
+}
+
+Universidade* Principal ::localizaUniversidade(char *n) {
+
+    list<Universidade*>::iterator i;
+
+    Universidade* uni = NULL;
+
+    int flag = 0;
+
+    for (i = lUni.begin(); i != lUni.end(); i++){
+        if (strcmp((*i)->getNome(), n) == 0){
+            uni = *i;
+        }
+    }
+
+    return uni;
+
+
+
+}
 
 

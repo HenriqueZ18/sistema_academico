@@ -11,36 +11,38 @@
 #include "Disciplina.h"
 #include "Departamento.h"
 
+
 using namespace std;
 
 class Principal {
 
 private:
+    list<Universidade*> lUni;
+    list<Departamento*> lDep;
+    list<Disciplina*> lDis;
 
-    Professor Simao;
-    Aluno Zequinha;
-    Aluno Greg;
-    Aluno Ronilson;
-
-    Universidade UTFPR;
-
-    Departamento DAINF;
-    Departamento DAELN;
-    Departamento DAFIS;
-    Departamento DAMAT;
-
-    Disciplina FProg;
-    Disciplina ED1;
-    Disciplina TecProg;
-
-    int diaAtual;
-    int mesAtual;
-    int anoAtual;
+    int dia, mes, ano;
+    int qtdUni, qtdDep, qtdDis;
 
 public:
     Principal ();
     ~Principal();
     void Execute ();
+
+    void cadDisciplina ();
+    void cadDepartamento ();
+    void cadUniversidade ();
+
+    void menu ();
+    void menuCad ();
+    void menuExe ();
+
+    void imprimeDisciplinas ();
+    void imprimeDepartamentos ();
+    void imprimeUniversidades ();
+
+    Universidade* localizaUniversidade (char* n);
+
 };
 
 #endif //SISTEMA_ACADEMICO_PRINCIPAL_H
