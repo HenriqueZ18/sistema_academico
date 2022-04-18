@@ -5,11 +5,11 @@
 #ifndef SISTEMA_ACADEMICO_PRINCIPAL_H
 #define SISTEMA_ACADEMICO_PRINCIPAL_H
 
-#include "Pessoa.h"
 #include "Universidade.h"
 #include "Professor.h"
 #include "Disciplina.h"
 #include "Departamento.h"
+#include "Aluno.h"
 
 
 using namespace std;
@@ -20,9 +20,10 @@ private:
     list<Universidade*> lUni;
     list<Departamento*> lDep;
     list<Disciplina*> lDis;
+    list<Aluno*> lAlu;
 
     int dia, mes, ano;
-    int idDep, idDis, idUni;
+    int idDep, idDis, idUni, idAlu;
 
 public:
     Principal ();
@@ -32,6 +33,7 @@ public:
     void cadDisciplina ();
     void cadDepartamento ();
     void cadUniversidade ();
+    void cadAluno ();
 
     void menu ();
     void menuCad ();
@@ -40,9 +42,11 @@ public:
     void imprimeDisciplinas ();
     void imprimeDepartamentos ();
     void imprimeUniversidades ();
+    void imprimeAluno ();
 
     Universidade* localizaUniversidade (char* n);
     Departamento* localizaDepartamento (char* n);
+    Disciplina* localizaDisciplina (char* n);
 
 };
 

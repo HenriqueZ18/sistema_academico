@@ -15,6 +15,7 @@ Principal:: Principal ()
     idDep = 0;
     idDis = 0;
     idUni = 0;
+    idAlu = 0;
 
     Execute ();
 }
@@ -30,6 +31,8 @@ void Principal:: Execute ()
 {
     menu ();
 }
+
+/*=================================MENUS==================================*/
 
 void Principal :: menu (){
 
@@ -65,7 +68,7 @@ void Principal :: menuCad (){
 
     int op = -1;
 
-    while (op != 4){
+    while (op != 5){
 
         system ("clear");
         //system("cls");
@@ -74,7 +77,8 @@ void Principal :: menuCad (){
         cout << "1- Cadastrar Disciplina" << endl;
         cout << "2- Cadastrar Departamento" << endl;
         cout << "3- Cadastrar Universidade" << endl;
-        cout << "4- Sair" << endl;
+        cout << "4- Cadastrar Aluno" << endl;
+        cout << "5- Sair" << endl;
         cin >> op;
 
         switch (op){
@@ -85,7 +89,9 @@ void Principal :: menuCad (){
             break;
             case 3: {cadUniversidade();}
             break;
-            case 4 : {cout << "SAINDO..." << endl;}
+            case 4: {cadAluno();}
+            break;
+            case 5 : {cout << "SAINDO..." << endl;}
             break;
             default : {
                 cout << "Opção Inválida" << endl;
@@ -143,6 +149,9 @@ void Principal :: menuExe (){
     }
 }
 
+/*========================IMPRESSÃO=======================*/
+
+
 void Principal ::imprimeDisciplinas() {
 
     list<Disciplina*>::iterator i;
@@ -169,6 +178,9 @@ void Principal ::imprimeUniversidades() {
         cout << (*i)->getNome() << endl;
 
 }
+
+/*=================================CADASTRO==================================*/
+
 
 void Principal :: cadDisciplina (){
 
@@ -254,6 +266,65 @@ void Principal :: cadUniversidade() {
     lUni.push_back(aux);
 }
 
+void Principal :: cadAluno() {
+
+    system ("clear");
+
+    Aluno* aux;
+    Disciplina* dis = NULL;
+    char nomeA [150];
+    char nomeDis [150];
+    int RA;
+    int flag = 0;
+
+    cout <<"Insira o nome do Aluno:" << endl;
+    cin >> nomeA;
+
+    aux = new Aluno(0,0,0, nomeA);
+
+    aux->setId(idAlu);
+    idAlu++;
+
+    cout << "Insira o RA do Aluno. " << endl;
+    cin >> RA;
+
+    aux->setRA(RA);
+
+    cout <<"Você gostaria de cadastrar o aluno em alguma disciplina?\n1- Sim\n2- Não" << endl;
+    cin >> flag;
+
+    while (flag == 1){
+        cout << "DISCIPLINAS CADASTRADAS" << endl;
+        imprimeDisciplinas();
+
+        cout << "Insira o nome da Disciplina" << endl;
+        cin >> nomeDis;
+
+        dis = localizaDisciplina(nomeDis);
+
+        if (dis == NULL){
+            cout << "Não foi possível localizar a Disciplina." << endl;
+        }
+        else {
+            dis->addAluno(aux);
+
+            cout << "O aluno " << aux->getNome() << " foi incluído com Sucesso à disciplina "
+            << dis->getNome() << endl;
+        }
+
+        cout << "Gostaria de cadastrar o Aluno em mais alguma Disciplina?\n1- Sim\n"
+                "2- Não" << endl;
+        cin >> flag;
+
+    }
+
+
+    lAlu.push_back(aux);
+
+}
+
+/*=================================LOCALIZA==================================*/
+
 Universidade* Principal ::localizaUniversidade(char *n) {
 
     list<Universidade*>::iterator i;
@@ -283,5 +354,19 @@ Departamento* Principal ::localizaDepartamento(char *n) {
     }
 
     return dep;
+}
+
+Disciplina* Principal :: localizaDisciplina (char *n){
+    list<Disciplina*>::iterator i;
+
+    Disciplina* dis = NULL;
+
+    for (i = lDis.begin(); i != lDis.end() && dis == NULL; i++){
+        if(strcmp((*i)->getNome(), n)== 0){
+            dis = *i;
+        }
+    }
+
+    return dis;
 }
 

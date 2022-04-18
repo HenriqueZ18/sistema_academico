@@ -18,7 +18,7 @@ private:
 
 public:
 
-    Aluno (int diaNa, int mesNa, int anoNa, char* nome = "");
+    Aluno (int diaNa = 0, int mesNa = 0, int anoNa = 0, char* nome = "");
 
     ~Aluno ();
 
