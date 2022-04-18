@@ -6,6 +6,7 @@
 Universidade::Universidade(char *n) {
 
     strcpy(nome, n);
+    deps = 0;
 
 }
 

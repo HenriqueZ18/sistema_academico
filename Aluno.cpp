@@ -6,17 +6,11 @@
 
 Aluno:: Aluno (int diaNa, int mesNa, int anoNa, char* nome) : Pessoa (diaNa, mesNa, anoNa, nome)
 {
-   RA = 0;
+   RA = -1;
+   id = -1;
 }
 
-Aluno:: Aluno (int i) : Pessoa()
-{
-    RA = i;
-}
-
-Aluno:: ~Aluno (){
-    RA = 0;
-}
+Aluno:: ~Aluno (){}
 
 void Aluno ::setRA(int n) {
     RA = n;

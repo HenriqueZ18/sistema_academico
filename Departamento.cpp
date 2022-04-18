@@ -6,11 +6,11 @@
 #include "ListaDisciplina.h"
 
 
-Departamento:: Departamento (char *n, int i){
+Departamento:: Departamento (char *n){
 
     strcpy (nome, n);
     pUnivFiliado = nullptr;
-    id = i;
+    id = -1;
 }
 
 Departamento:: ~Departamento (){

@@ -21,7 +21,7 @@ private:
     char nome [100];
     //vector<Departamento*> Vdep ;
     list <Departamento*> Ldep;
-    int deps = 0;
+    int deps;
 
 
 public:

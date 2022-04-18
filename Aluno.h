@@ -19,7 +19,7 @@ private:
 public:
 
     Aluno (int diaNa, int mesNa, int anoNa, char* nome = "");
-    Aluno (int i = -1);
+
     ~Aluno ();
 
     void setRA (int n);
