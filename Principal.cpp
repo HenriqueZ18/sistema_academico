@@ -40,7 +40,7 @@ void Principal :: menu (){
 
     int op = -1;
 
-    while (op != 4){
+    while (op != 5){
         //Comando para limpar o terminal do linux.
         system ("clear");
         //system("cls");
@@ -49,7 +49,8 @@ void Principal :: menu (){
         cout << "1- Realizar um cadastro" << endl;
         cout << "2- Executar" << endl;
         cout << "3- Gravar" << endl;
-        cout << "4- Sair" << endl;
+        cout << "4- Recuperar" << endl;
+        cout << "5- Sair" << endl;
         cin >> op;
 
         switch (op){
@@ -60,7 +61,9 @@ void Principal :: menu (){
             break;
             case 3: {menuGrava();}
             break;
-            case 4: {cout << "TERMINANDO O PROGRAMA" << endl;}
+            case 4: {menuRecupera();}
+                break;
+            case 5: {cout << "TERMINANDO O PROGRAMA" << endl;}
             break;
             default : {cout << "Opção inválida" << endl;
                 system ("Pause");
@@ -165,7 +168,7 @@ void Principal :: menuGrava (){
 
     int op = -1;
 
-    while (op != 6){
+    while (op != 7){
 
         system ("clear");
 
@@ -174,8 +177,9 @@ void Principal :: menuGrava (){
         cout << "2- Gravar Departamentos" << endl;
         cout << "3- Gravar Universidade" << endl;
         cout << "4- Gravar Alunos" << endl;
-        cout << "5- Gravar Todos" << endl;
-        cout << "6- Sair" << endl;
+        cout << "5- Gravar Ids" << endl;
+        cout << "6- Gravar Todos" << endl;
+        cout << "7- Sair" << endl;
         cin >> op;
 
         switch (op){
@@ -187,9 +191,11 @@ void Principal :: menuGrava (){
                 break;
             case 4: {gravaAlunos();}
                 break;
-            case 5: {gravaTudo();}
+            case 5: {gravaId();}
                 break;
-            case 6 : {cout << "SAINDO..." << endl;}
+            case 6: {gravaTudo();}
+                break;
+            case 7 : {cout << "SAINDO..." << endl;}
                 break;
             default : {
                 cout << "Opção Inválida" << endl;
@@ -197,6 +203,48 @@ void Principal :: menuGrava (){
             }
 
 
+        }
+
+
+    }
+}
+
+void Principal ::menuRecupera() {
+
+    int op = -1;
+
+    while (op != 7){
+        system ("clear");
+
+        cout << "Informe a opção desejada: " << endl;
+        cout << "1- Recuperar Disciplinas" << endl;
+        cout << "2- Recuperar Departamentos" << endl;
+        cout << "3- Recuperar Universidade" << endl;
+        cout << "4- Recuperar Alunos" << endl;
+        cout << "5- Recuperar Ids" << endl;
+        cout << "6- Recuperar Todos" << endl;
+        cout << "7- Sair" << endl;
+        cin >> op;
+
+        switch (op){
+            case 1 : {recuperaDisciplinas();}
+                break;
+            case 2 : {recuperaDepartamentos();}
+                break;
+            case 3: {recuperaUniversidades();}
+                break;
+            case 4: {recuperaAlunos();}
+                break;
+            case 5: {recuperaId();}
+                break;
+            case 6: {recuperaTudo();}
+                break;
+            case 7 : {cout << "SAINDO..." << endl;}
+                break;
+            default : {
+                cout << "Opção Inválida" << endl;
+                getchar();
+            }
         }
 
 
@@ -238,7 +286,8 @@ void Principal ::imprimeAlunos() {
     list<Aluno*>::iterator i;
 
     for (i = lAlu.begin(); i != lAlu.end(); i++)
-        cout << (*i)->getNome() << endl;
+        cout << (*i)->getNome() << " " <<(*i)->getId() << " " << (*i)->getRA() << endl;
+        cout << "\n" << endl;
 }
 
 /*=================================CADASTRO==================================*/
@@ -579,4 +628,30 @@ void Principal ::recuperaAlunos() {
         getchar();
         return;
     }
+    lAlu.clear();
+
+    Aluno* novo_al = NULL;
+    int id, RA;
+    char nome_al [150];
+
+    cout << "Recuperando alunos..." << endl;
+    while(recuperadorAlunos >> id >> RA >> nome_al){
+
+        if(strcmp(nome_al, "") != 0){
+            novo_al = new Aluno(0,0,0,nome_al);
+            novo_al->setId(id);
+            novo_al->setRA(RA);
+
+            lAlu.push_back(novo_al);
+        }
+    }
+
+    recuperadorAlunos.close();
+    cout << "Alunos recuperados com sucesso." << endl;
 }
+
+void Principal ::recuperaUniversidades() {}
+void Principal ::recuperaDepartamentos() {}
+void Principal ::recuperaDisciplinas() {}
+void Principal ::recuperaId() {}
+void Principal ::recuperaTudo() {}

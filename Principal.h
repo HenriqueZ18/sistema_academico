@@ -39,6 +39,7 @@ public:
     void menuCad ();
     void menuExe ();
     void menuGrava ();
+    void menuRecupera ();
 
     void imprimeDisciplinas ();
     void imprimeDepartamentos ();
