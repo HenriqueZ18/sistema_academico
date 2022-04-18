@@ -11,9 +11,9 @@ Principal:: Principal ()
     dia = 0;
     mes = 0;
     ano = 0;
-    qtdDep = 0;
-    qtdDis = 0;
-    qtdUni = 0;
+    idDep = 0;
+    idDis = 0;
+    idUni = 0;
 
     Execute ();
 }
@@ -170,11 +170,29 @@ void Principal :: cadDisciplina (){
     //system("cls");
 
     Disciplina* aux;
+    Departamento* d = NULL;
 
     aux = new Disciplina();
 
+    char nome_dep [10];
+
     cout << "Insira o nome da disciplina:" << endl;
     cin >> aux->getNome();
+
+    cout <<"Insira o nome da Departamento a que pertence a disciplina " << endl;
+    cin >> nome_dep;
+
+    d = localizaDepartamento(nome_dep);
+
+    if (d == NULL){
+        cout << "O Departamento não foi localizado." << endl;
+    }
+    else {
+        aux->setDepFiliado(d);
+
+        cout << "A disciplina " << aux->getNome() << " foi associada com sucesso ao departamento "
+        << d->getNome() << endl;
+    }
 
     lDis.push_back(aux);
 }
@@ -236,8 +254,6 @@ Universidade* Principal ::localizaUniversidade(char *n) {
 
     Universidade* uni = NULL;
 
-    int flag = 0;
-
     for (i = lUni.begin(); i != lUni.end(); i++){
         if (strcmp((*i)->getNome(), n) == 0){
             uni = *i;
@@ -246,8 +262,20 @@ Universidade* Principal ::localizaUniversidade(char *n) {
 
     return uni;
 
-
-
 }
 
+Departamento* Principal ::localizaDepartamento(char *n) {
+
+    list<Departamento*>::iterator i;
+
+    Departamento* dep = NULL;
+
+    for (i = lDep.begin(); i != lDep.end() && dep == NULL; i++){
+        if (strcmp((*i)->getNome(), n)== 0){
+            dep = *i;
+        }
+    }
+
+    return dep;
+}
 

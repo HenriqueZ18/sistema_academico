@@ -25,7 +25,7 @@ private:
 
 public:
 
-    Departamento (char* n = "");
+    Departamento (char* n = "", int i = -1);
 
     ~Departamento();
 

@@ -22,7 +22,7 @@ private:
     list<Disciplina*> lDis;
 
     int dia, mes, ano;
-    int qtdUni, qtdDep, qtdDis;
+    int idDep, idDis, idUni;
 
 public:
     Principal ();
@@ -42,6 +42,7 @@ public:
     void imprimeUniversidades ();
 
     Universidade* localizaUniversidade (char* n);
+    Departamento* localizaDepartamento (char* n);
 
 };
 
