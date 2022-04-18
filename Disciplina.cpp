@@ -78,6 +78,19 @@ void Disciplina ::imprimeAlunos() {
         cout << (*i)->getNome() << endl;
 
 }
+
+void Disciplina :: setId (int n){
+    id = n;
+}
+
+int Disciplina ::getId() {
+    return id;
+}
+
+
+
+
+
 /*
  * Para efeitos de aprendizado foi feito a implementaçao da lista encadeada de acordo com os videos
  * No entanto, ela (a lista implementada pelo propio aluno) nao foi utilizada, mas sim o elemento lista

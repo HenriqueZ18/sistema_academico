@@ -29,8 +29,11 @@ char* Departamento :: getNome () {
 }
 
 void Departamento :: setId(int n) {
-
     id = n;
+}
+
+int Departamento :: getId() {
+    return id;
 }
 
 void Departamento :: setUnivFiliado(Universidade *pu) {

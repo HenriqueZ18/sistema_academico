@@ -26,4 +26,12 @@ int Aluno :: getRA () {
     return RA;
 }
 
+void Aluno :: setId (int n){
+    id = n;
+}
+
+int Aluno ::getId() {
+    return id;
+}
+
 

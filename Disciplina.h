@@ -23,6 +23,7 @@ private:
     char nome [130];
     int max;
     int alunos;
+    int id;
 
     Departamento* pDepFiliado;
     list<Aluno*> lalunos;
@@ -45,6 +46,9 @@ public:
     void addAluno (Aluno* a);
     void delAluno (Aluno* a);
     void imprimeAlunos ();
+
+    void setId (int n);
+    int getId ();
 
     //void incluiAluno (Aluno* a);
 

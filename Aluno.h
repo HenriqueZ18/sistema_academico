@@ -14,6 +14,7 @@ class Aluno : public Pessoa {
 private:
 
     int RA;
+    int id;
 
 public:
 
@@ -23,6 +24,9 @@ public:
 
     void setRA (int n);
     int getRA ();
+
+    void setId (int n);
+    int getId ();
 };
 
 #endif //SISTEMA_ACADEMICO_ALUNO_H

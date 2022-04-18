@@ -33,6 +33,7 @@ public:
     char* getNome ();
 
     void setId (int id);
+    int getId ();
 
     void setUnivFiliado (Universidade* pu);
 

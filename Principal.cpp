@@ -11,6 +11,7 @@ Principal:: Principal ()
     dia = 0;
     mes = 0;
     ano = 0;
+
     idDep = 0;
     idDis = 0;
     idUni = 0;
@@ -18,7 +19,12 @@ Principal:: Principal ()
     Execute ();
 }
 
-Principal:: ~Principal (){}
+Principal:: ~Principal (){
+
+    lUni.clear();
+    lDep.clear();
+    lDis.clear();
+}
 
 void Principal:: Execute ()
 {
