@@ -258,8 +258,13 @@ void Principal ::imprimeDisciplinas() {
 
     list<Disciplina*>::iterator i;
 
-    for (i = lDis.begin(); i != lDis.end(); i++)
+    for (i = lDis.begin(); i != lDis.end(); i++){
         cout << (*i)->getNome() << endl;
+        cout << endl;
+        (*i)->imprimeAlunos();
+        cout << "=====================================" << endl;
+    }
+
 
 }
 
@@ -267,8 +272,13 @@ void Principal ::imprimeDepartamentos() {
 
     list<Departamento*>::iterator i;
 
-    for (i = lDep.begin(); i != lDep.end(); i++)
+    for (i = lDep.begin(); i != lDep.end(); i++){
         cout << (*i)->getNome() << endl;
+        cout << endl;
+        (*i)->imprimeDisciplinas();
+        cout << "================================" << endl;
+    }
+
 
 }
 
@@ -276,8 +286,13 @@ void Principal ::imprimeUniversidades() {
 
     list<Universidade*>::iterator i;
 
-    for (i = lUni.begin(); i != lUni.end(); i++)
+    for (i = lUni.begin(); i != lUni.end(); i++){
         cout << (*i)->getNome() << endl;
+        cout << endl;
+        (*i)->imprimeDepartamentos();
+        cout << "================================" << endl;
+    }
+
 
 }
 
@@ -531,6 +546,7 @@ void Principal ::gravaUniversidades() {
     cout << "Gravando universidades..." << endl;
     for(i = lUni.begin(); i != lUni.end(); i++){
         gravadorUniversidades << (*i)->getNome() << endl;
+        gravadorUniversidades << (*i)->getId() << endl;
     }
 
     gravadorUniversidades.close();
@@ -703,6 +719,9 @@ void Principal :: gravaUniDep (){
         }
 
     }
+    gravadorUniDep.close();
+
+    cout << "As relações Departamento Disciplina foram guardadas com sucesso" << endl;
 }
 
 
@@ -766,12 +785,14 @@ void Principal ::recuperaUniversidades() {
 
     Universidade* nova_uni = NULL;
     char nome [150];
+    int idu;
 
     cout << "Recuperando universidades..." << endl;
-    while (recuperadorUniversidades >> nome){
+    while (recuperadorUniversidades >> nome >> idu){
         if(strcmp(nome, "") != 0){
             nova_uni = new Universidade();
             nova_uni->setNome(nome);
+            nova_uni->setId(idu);
 
             lUni.push_back(nova_uni);
         }
