@@ -70,6 +70,10 @@ public:
     void recuperaDisciplinas ();
     void recuperaId ();
 
+    void associaDisAlu ();
+    void associaDisDep ();
+    void associaUniDep ();
+
     void recuperaTudo ();
 
     Disciplina* retornaDisId (int id);
@@ -77,9 +81,7 @@ public:
     Universidade* retornaUniId (int id);
     Aluno* retornaAluId (int id);
 
-    void associaDisAlu ();
-    void associaDisDep ();
-    void associaUniDep ();
+
 
 
 

@@ -379,6 +379,9 @@ void Principal :: cadUniversidade() {
     cout << "Insira o nome da Universidade:" << endl;
     cin >> aux->getNome();
 
+    aux->setId(idUni);
+    idUni++;
+
 
     lUni.push_back(aux);
 }
@@ -854,12 +857,109 @@ void Principal ::recuperaId() {
     recuperaId.close();
     cout << "Ids recuperadas com sucesso" << endl;
 }
+
+void Principal :: associaDisAlu (){
+
+    ifstream associaDisAlu ("ada.dat", ios::in);
+
+    if(!associaDisAlu){
+        cerr << "Arquivo não pode ser aberto" << endl;
+        fflush(stdin);
+        getchar();
+        return;
+    }
+
+    int idd, ida, alunos, i;
+
+    Disciplina* pdis;
+    Aluno* palu;
+
+    while(associaDisAlu >> idd >> alunos){
+        pdis = retornaDisId (idd);
+        for(i = 0; i < alunos ; i++){
+            associaDisAlu >> ida;
+            palu = retornaAluId(ida);
+            pdis->addAluno(palu);
+        }
+    }
+
+    associaDisAlu.close();
+
+    cout << "As Associções Disciplina Aluno foram recuperadas com sucesso." << endl;
+}
+
+void Principal :: associaDisDep(){
+
+    ifstream associaDisDep ("add.dat", ios:: in);
+
+    if (!associaDisDep){
+        cerr << "Arquivo não pode ser aberto" << endl;
+        fflush(stdin);
+        getchar();
+        return;
+    }
+
+    int iddi, idde, disciplinas, i;
+
+    Departamento* pdep;
+    Disciplina* pdis;
+
+    while (associaDisDep >> idde >> disciplinas){
+        pdep = retornaDepId(idde);
+        for (i = 0; i < disciplinas;i++){
+            associaDisDep >> iddi;
+            pdis = retornaDisId(iddi);
+            pdis->setDepFiliado(pdep);
+        }
+    }
+
+    associaDisDep.close();
+
+    cout  << "As Associções Disciplina Departamento foram recuperadas com sucesso." << endl;
+
+}
+
+void Principal ::associaUniDep() {
+
+    ifstream associaUniDep ("aud.dat", ios::in);
+
+    if (!associaUniDep){
+        cerr << "Arquivo não pode ser aberto" << endl;
+        fflush(stdin);
+        getchar();
+        return;
+    }
+
+    int idu, idde, departamentos, i;
+
+    Universidade* puni;
+    Departamento* pdep;
+
+    while (associaUniDep >> idu >> departamentos){
+        puni = retornaUniId(idu);
+        for (i = 0; i < departamentos; i++){
+            associaUniDep >> idde;
+            pdep = retornaDepId(idde);
+            puni->setDepartamento(pdep);
+        }
+    }
+
+    associaUniDep.close();
+
+    cout << "As Associções Universidade Departamento foram recuperadas com sucesso." << endl;
+}
+
+
 void Principal ::recuperaTudo() {
     recuperaAlunos ();
     recuperaUniversidades ();
     recuperaDepartamentos ();
     recuperaDisciplinas ();
     recuperaId ();
+
+    associaDisAlu ();
+    associaDisDep ();
+    associaUniDep ();
 }
 
 
