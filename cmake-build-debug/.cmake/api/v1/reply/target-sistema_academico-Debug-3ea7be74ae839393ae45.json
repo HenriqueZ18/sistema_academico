@@ -131,7 +131,8 @@
 				22,
 				24,
 				26,
-				27
+				27,
+				28
 			]
 		}
 	],
@@ -289,6 +290,11 @@
 		{
 			"backtrace" : 1,
 			"path" : "Elemento.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Lista.h",
 			"sourceGroupIndex" : 1
 		}
 	],

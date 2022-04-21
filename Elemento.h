@@ -28,8 +28,8 @@ public:
     void setPrev (Elemento<Type>* p);
     Elemento<Type>* getPrev ();
 
-    void setCur (Elemento<Type>* c);
-    Elemento<Type>* getCur ();
+    void setCur (Type* c);
+    Type* getCur ();
 
     void setNome (string s);
     string getNome ();
@@ -66,12 +66,12 @@ Elemento<Type>* Elemento<Type> ::getPrev() {
 }
 
 template<class Type>
-void Elemento<Type> ::setCur(Elemento<Type> *c) {
+void Elemento<Type> ::setCur(Type *c) {
     current = c;
 }
 
 template<class Type>
-Elemento<Type>* Elemento<Type> ::getCur() {
+Type* Elemento<Type> ::getCur() {
     return current;
 }
 
